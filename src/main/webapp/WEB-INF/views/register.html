@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="resources/css/register.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div class="forms">
+        <div class="form login">
+            <span class="title">Вход</span>
+            <form th:method="POST" th:action="@{/}" th:object="${person}">
+                <div class="input-field">
+                    <input type="text" placeholder="Введите ваш email" required>
+                    <i class="uil uil-envelope icon"></i>
+                </div>
+                <div class="input-field">
+                    <input type="password" class="password" placeholder="Введите ваш пароль" required>
+                    <i class="uil uil-lock icon"></i>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
+               
+                <div class="input-field button">
+                    <input type="submit" value="Войти">
+                </div>
+            </form>
+            <div class="login-signup">
+                <span class="text">Еще не участник?
+                    <a href="#" class="text signup-link">Зарегистрируйтесь</a>
+                </span>
+            </div>
+        </div>
+        <!-- Registration Form -->
+        <div class="form signup">
+            <span class="title">Регистрация</span>
+            <form th:method="POST" th:action="@{/}" th:object="${person}">
+                <div class="input-field">
+                    <input name="name" type="text" placeholder="Введите свое имя" required>
+                    <i class="uil uil-user"></i>
+                </div>
+                <div class="input-field">
+                    <input name="email" type="text" placeholder="Введите свой email" required>
+                    <i class="uil uil-envelope icon"></i>
+                </div>
+                <div class="input-field">
+                    <input name="password" type="password" class="password" placeholder="Создайте пароль" required>
+                    <i class="uil uil-lock icon"></i>
+                </div>
+                <div class="input-field">
+                    <input type="password" class="password" placeholder="Подтвердите пароль" required>
+                    <i class="uil uil-lock icon"></i>
+                    <i class="uil uil-eye-slash showHidePw"></i>
+                </div>
+                <div class="checkbox-text">
+                    <div class="checkbox-content">
+                        <input type="radio" name="isteacher" id="isteacher" value="teacher">
+                        <label for="isteacher" class="text">Преподователь</label>
+                        <input type="radio" name="isteacher" id="isstudent"value="student">
+                        <label for="isstudent" class="text">Ученик</label>
+
+                    </div>
+                </div>
+                <div class="input-field button">
+                    <input type="submit" value="Зарегистрироваться">
+                </div>
+            </form>
+            <div class="login-signup">
+                <span class="text">Уже участник?
+                    <a href="#" class="text login-link">Войти сейчас</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  const container = document.querySelector(".container"),
+      pwShowHide = document.querySelectorAll(".showHidePw"),
+      pwFields = document.querySelectorAll(".password"),
+      signUp = document.querySelector(".signup-link"),
+      login = document.querySelector(".login-link");
+    //   js code to show/hide password and change icon
+    pwShowHide.forEach(eyeIcon =>{
+        eyeIcon.addEventListener("click", ()=>{
+            pwFields.forEach(pwField =>{
+                if(pwField.type ==="password"){
+                    pwField.type = "text";
+                    pwShowHide.forEach(icon =>{
+                        icon.classList.replace("uil-eye-slash", "uil-eye");
+                    })
+                }else{
+                    pwField.type = "password";
+                    pwShowHide.forEach(icon =>{
+                        icon.classList.replace("uil-eye", "uil-eye-slash");
+                    })
+                }
+            }) 
+        })
+    })
+    // js code to appear signup and login form
+    signUp.addEventListener("click", ( )=>{
+        container.classList.add("active");
+    });
+    login.addEventListener("click", ( )=>{
+        container.classList.remove("active");
+    });
+</script>
+</body>
+</html>

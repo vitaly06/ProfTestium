@@ -1,0 +1,133 @@
+body{
+    margin: 0;
+    background-image: url("../imgs/bg_main.png");
+    height: 100%;
+    background-repeat: no-repeat;
+}
+header{
+    margin: 50px;
+    margin-left: -60px;
+}
+
+
+.header_line{
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+
+.nav-item{
+    color: white;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    margin-right: 25px;
+    transition: opacity 500ms ease;
+    
+}
+.nav-item:hover{
+    opacity: 0.7;
+}
+
+.info {
+    margin-top: 170px;
+    margin-left: 133px;
+
+    font-family: 'Ubuntu', sans-serif;
+    width: 500px;
+    font-size: 84px;
+    color: #6F7FEA;
+    justify-content: center;
+    text-align: center;
+}
+.main {
+    display: flex;
+  }
+  
+  .woman {
+    display: block;
+    margin-left: 200px;
+  }  
+
+.c-button{
+    position: absolute; 
+    left: 300px; 
+    top: 800px;
+    color: white;
+    cursor: pointer;
+    background-color: #6F7FEA;
+    display: inline-block;	
+	box-sizing: border-box;
+	padding: 0 25px;
+	margin: 0 15px 15px 0;
+	outline: none;
+	border: 1px solid #6F7FEA;
+	border-radius: 50px;
+	height: 66px;
+    width: 250px;
+	line-height: 46px;
+	font-size: 34px;
+	font-weight: 600;
+	text-decoration: none;
+    user-select: none;
+	appearance: none;
+	touch-action: manipulation;  
+	vertical-align: top;
+	transition: box-shadow 0.2s;
+    font-family: Ubuntu;
+
+  }
+
+.info-next{
+margin-top: 140px;
+margin-left: 50px;
+color: rgb(255, 254, 254);
+font-family: Ubuntu;
+font-size: 30px;
+font-weight: 400;
+letter-spacing: 0em;
+text-align: center;
+width: 550px;
+}
+
+.info-next2{
+    margin-top: 90px;
+    margin-left: 50px;
+    color: rgb(255, 255, 255);
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: center;
+    width: 550px;
+    }
+
+.logo2 {
+        display: block;
+        margin-left: 700px;
+        margin-top: -600px;
+} 
+
+
+.partners{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+
+.title-partners{
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: -100px;
+    color: #6F7FEA;
+    font-family: Ubuntu;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+    
+}
