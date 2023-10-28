@@ -1,7 +1,9 @@
 package ru.iteam.hackaton.controllers;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,11 +21,14 @@ public class MainController {
 
     @GetMapping("/auth")
     public String auth(){
-        return "register.html";
+        return "register";
     }
 
     @PostMapping("/")
-    public String saveUser(@ModelAttribute("person")Person person){
+    public String saveUser(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "register";
+        }
         if (person.getName() == null){
             System.out.println("login");
         }
