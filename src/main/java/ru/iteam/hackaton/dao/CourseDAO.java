@@ -3,10 +3,9 @@ package ru.iteam.hackaton.dao;
 import org.springframework.stereotype.Component;
 import ru.iteam.hackaton.models.Course;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CourseDAO {
@@ -37,6 +36,43 @@ public class CourseDAO {
             throwables.printStackTrace();
         }
         //System.out.println(1);
+    }
+    public List<Course> getData(){
+        connect();
+        try {
+            Statement statement = connection.createStatement();
+            String SQL = "SELECT * FROM COURSES";
+            List<Course> courses = new ArrayList<Course>();
+            ResultSet resultSet = statement.executeQuery(SQL);
+            while(resultSet.next())
+            {
+                courses.add(new Course(
+                resultSet.getString("text"),
+                resultSet.getString("short_info")));
+            }
+            //System.out.println(name + " " + email + " " + password + " " + isteacher);
+            connection.close();
+            return courses;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return new ArrayList<>();
+    }
+
+    public int getId(Course course){
+        connect();
+        try {
+            Statement statement = connection.createStatement();
+            String SQL = "SELECT id FROM courses WHERE short_info = '" + course.getShort_info() + "';";
+            ResultSet resultSet = statement.executeQuery(SQL);
+            int id = resultSet.getInt("id");
+            //System.out.println(name + " " + email + " " + password + " " + isteacher);
+            connection.close();
+            return id;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return 0;
     }
 
 }

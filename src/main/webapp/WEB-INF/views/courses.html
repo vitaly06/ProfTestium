@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/courses.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="/main"><img src="resources/imgs/logo.png" alt=""width="400px"></a>
+    </header>
+    <div class="main">
+        <p>КурсыПрофтестиум</p>
+    </div>
+    <div th:block th:each="course : ${courses}" class="container">
+        <div class="rectangle">
+          <div th:text="${course.getShort_info}" class="text"><p>Информация о курсе</p></div>
+          <a href="/main/course"><div class="button">Записаться на курс</div></a>
+        </div>
+        <!--<div class="rectangle">
+            <div class="text"><p>Информация о курсе</p></div>
+            <div class="button" onclick="window.location='index.html'">Записаться на курс</div>
+        </div>
+        <div class="rectangle">
+            <div class="text"><p>Информация о курсе</p></div>
+            <div class="button" onclick="window.location='index.html'">Записаться на курс</div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="rectangle">
+          <div class="text"><p>Информация о курсе</p></div>
+          <div class="button" onclick="window.location='index.html'">Записаться на курс</div>
+        </div>
+        <div class="rectangle">
+            <div class="text"><p>Информация о курсе</p></div>
+            <div class="button" onclick="window.location='index.html'">Записаться на курс</div>
+        </div>
+        <div class="rectangle">
+            <div class="text"><p>Информация о курсе</p></div>
+            <div class="button" onclick="window.location='index.html'">Записаться на курс</div>
+        </div>
+      </div>-->
+      
+      </div>    
+</body>
+</html>
