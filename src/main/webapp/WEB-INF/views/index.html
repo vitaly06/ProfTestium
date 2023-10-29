@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="htttp://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,51 +12,63 @@
 </head>
 <body>
 <header>
-     <div class="container">
+    <div class="container">
         <div class="header_line">
-            <img src="resources/imgs/logo.png" alt=""width = "400">
+            <img src="resources/imgs/logo.png" alt="" width="400">
             <div class="nav">
                 <a class="nav-item" href="#" onclick="scrollToPartners()">Наши партнеры</a>
                 <a class="nav-item" href="#">Курсы</a>
                 <a class="nav-item" href="#">Тарифы</a>
             </div>
-            <a href="/main/auth"><img src="resources/imgs/user.png" alt=""width="60" height="60"></a>
+            <span th:if="${isAuth} == true">
+                <div th:if="${isTeacher} == 1">
+                    <a href="/main/lk"><img src="resources/imgs/user.png" alt="" width="60" height="60"></a>
+                </div>
+                <div th:if="${isTeacher} == 2">
+                    <a href="/main/lk"><img src="resources/imgs/user.png" alt="" width="60" height="60"></a>
+                </div>
+            </span>
+            <span th:unless="${isAuth} == true">
+                <a href="/main/auth"><img src="resources/imgs/user.png" alt="" width="60" height="60"></a>
+            </span>
         </div>
     </div>
 </header>
 
 <div class="main">
     <div class="info">
-    <p><b>ПрофТестиум -</b> это то, что вы искали!</p>
+        <p><b>ПрофТестиум -</b> это то, что вы искали!</p>
     </div>
     <div class="woman">
-        <img src="resources/imgs/women.png" alt=""width="570" height="870">
-        </div>
-        <button class="c-button" onclick="scrollToSection()">Начать</button>
+        <img src="resources/imgs/women.png" alt="" width="570" height="870">
+    </div>
+    <button class="c-button" onclick="scrollToSection()">Начать</button>
 </div>
-        <section id="section-id">
-            <div class="info-next">
-                <p><b>На нашем сайте</b> вы сможете создать свою интернет школу, собрать свою первую учебную группу и успешно выпустить её.</p>
-            </div>
-            <div class="info-next2">
-                <p>
-                <b>Мы же в свою очередь</b> поможем в ваших начинаниях, будем курировать на протяжении всего проекта, а наш чат-бот ответит на любой ваш вопрос в любое время суток!
-                </p>    
-            </div>
-            
-            <div class="logo2">
-                <img src="resources/imgs/logo2.png" alt="" width="570" height="670">
-                </div>
-          </section>
-          <div class="title-partners">
-            <p>Наши партнеры:</p>
-            </div>
+<section id="section-id">
+    <div class="info-next">
+        <p><b>На нашем сайте</b> вы сможете создать свою интернет школу, собрать свою первую учебную группу и успешно
+            выпустить её.</p>
+    </div>
+    <div class="info-next2">
+        <p>
+            <b>Мы же в свою очередь</b> поможем в ваших начинаниях, будем курировать на протяжении всего проекта, а наш
+            чат-бот ответит на любой ваш вопрос в любое время суток!
+        </p>
+    </div>
 
-            <div class="partners">
-          <img src="resources/imgs/misis.png" alt="" width="300" height="300">
-          <img src="resources/imgs/gazprom.png" alt="" width="300" height="300">
-          <img src="resources/imgs/ogy.png" alt="" width="300" height="300">
-            </div>
+    <div class="logo2">
+        <img src="resources/imgs/logo2.png" alt="" width="570" height="670">
+    </div>
+</section>
+<div class="title-partners">
+    <p>Наши партнеры:</p>
+</div>
+
+<div class="partners">
+    <img src="resources/imgs/misis.png" alt="" width="300" height="300">
+    <img src="resources/imgs/gazprom.png" alt="" width="300" height="300">
+    <img src="resources/imgs/ogy.png" alt="" width="300" height="300">
+</div>
 
 </body>
 </html>

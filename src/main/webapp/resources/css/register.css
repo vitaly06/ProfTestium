@@ -152,3 +152,7 @@ body{
     margin-top: 30px;
     text-align: center;
 }
+
+#logCheck{
+    justify-content: space-between;
+}

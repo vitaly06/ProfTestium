@@ -5,20 +5,29 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class Person {
-    @NotEmpty(message = "Имя не может быть пустым")
-    @Size(min = 2, max = 30, message = "Длина имени от 2 до 30 символов.")
+    //@NotEmpty(message = "Имя не может быть пустым")
+    //@Size(min = 2, max = 30, message = "Длина имени от 2 до 30 символов.")
     private String name;
     @NotEmpty(message = "Поле email не может быть пустым")
-    @Email(message = "Неверный формат")
+    //@Email(message = "Неверный формат")
     private String email;
     private String password;
     private String isteacher;
+    private String secondPass;
 
     public Person(String name, String email, String password, String isteacher) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.isteacher = isteacher;
+    }
+
+    public String getSecondPass() {
+        return secondPass;
+    }
+
+    public void setSecondPass(String secondPass) {
+        this.secondPass = secondPass;
     }
 
     public String getIsteacher() {

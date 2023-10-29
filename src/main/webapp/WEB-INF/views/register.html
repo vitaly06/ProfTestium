@@ -13,11 +13,13 @@
             <span class="title">Вход</span>
             <form th:method="POST" th:action="@{/}" th:object="${person}">
                 <div class="input-field">
-                    <input type="text" placeholder="Введите ваш email" required>
+                    <input type="text" placeholder="Введите ваш email" id="email" name="email">
+                    <div style="color:red" th:if="${#fields.hasErrors('email')}">Name Error</div>
                     <i class="uil uil-envelope icon"></i>
                 </div>
                 <div class="input-field">
-                    <input type="password" class="password" placeholder="Введите ваш пароль" required>
+                    <input name="password" type="password" class="password" placeholder="Введите ваш пароль" id="password">
+                    <!--<div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>-->
                     <i class="uil uil-lock icon"></i>
                     <i class="uil uil-eye-slash showHidePw"></i>
                 </div>
@@ -38,10 +40,12 @@
             <form th:method="POST" th:action="@{/}" th:object="${person}">
                 <div class="input-field">
                     <input name="name" type="text" placeholder="Введите свое имя" required>
+                    <div style="color:red" th:if="${#fields.hasErrors('name')}">Name Error</div>
                     <i class="uil uil-user"></i>
                 </div>
                 <div class="input-field">
                     <input name="email" type="text" placeholder="Введите свой email" required>
+                    <div style="color:red" th:if="${#fields.hasErrors('email')}">Name Error</div>
                     <i class="uil uil-envelope icon"></i>
                 </div>
                 <div class="input-field">
@@ -49,7 +53,7 @@
                     <i class="uil uil-lock icon"></i>
                 </div>
                 <div class="input-field">
-                    <input type="password" class="password" placeholder="Подтвердите пароль" required>
+                    <input name="secondPass" type="password" class="password" placeholder="Подтвердите пароль" required>
                     <i class="uil uil-lock icon"></i>
                     <i class="uil uil-eye-slash showHidePw"></i>
                 </div>
