@@ -13,7 +13,7 @@ public class PersonDao {
 
     private static Connection connection;
 
-    static {
+    public static void connect() {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
@@ -29,11 +29,13 @@ public class PersonDao {
 
 
     public void save(Person person) {
+        connect();
         try {
             Statement statement = connection.createStatement();
             String SQL = "INSERT INTO USERS VALUES('" + person.getName() + "', '" + person.getEmail() +
                     "', '" + person.getPassword() + "', '" + person.getIsteacher() + "')";
             statement.executeUpdate(SQL);
+            connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -42,6 +44,7 @@ public class PersonDao {
 
     // Авторизация / регистрация (проверка наличия пользователя в базе данных)
     public String login(String email, Boolean isLogin) {
+        connect();
         try {
             Statement statement = connection.createStatement();
             // При авторизации
@@ -49,12 +52,14 @@ public class PersonDao {
                 String SQL = "SELECT password FROM USERS WHERE email = '" + email + "'";
                 ResultSet resultSet = statement.executeQuery(SQL);
                 String password = resultSet.getString("password");
+                connection.close();
                 return password;
             }
             // При регистрации
             String SQL = "SELECT email FROM USERS WHERE email = '" + email + "'";
             ResultSet resultSet = statement.executeQuery(SQL);
             String emailRes = resultSet.getString("email");
+            connection.close();
             return emailRes;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -63,6 +68,7 @@ public class PersonDao {
     }
 
     public String[] getData(Person person){
+        connect();
         try {
             Statement statement = connection.createStatement();
             String SQL = "SELECT * FROM USERS WHERE email = '" + person.getEmail() + "'";
@@ -73,6 +79,7 @@ public class PersonDao {
             String isteacher = resultSet.getString("isteacher");
             //System.out.println(name + " " + email + " " + password + " " + isteacher);
             String[] data =  new String[] {name, email, password, isteacher};
+            connection.close();
             return data;
         } catch (SQLException throwables) {
             throwables.printStackTrace();

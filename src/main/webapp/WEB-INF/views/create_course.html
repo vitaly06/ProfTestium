@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="htttp://thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,13 +14,12 @@
     <header class="site-header">
         <a href="/main"><img src="resources/imgs/logo.png" alt="" width="350"></a>
     </header>
+    <form th:method="POST" th:action="@{/lk}" th:object="${course}">
     <div class="container">
         <section>
-            <form method="post">
-                <textarea id="mytextarea" name="mytextarea">
+                <textarea id="mytextarea" name="text">
                   Hello, World!
                 </textarea>
-            </form>
         </section>
        
         
@@ -31,7 +30,7 @@
                   <h5 class="modal-title">Краткая информация о курсе</h5>
                 </div>
                 <div class="modal-body">
-                  <textarea class="course-info"></textarea>
+                  <textarea name="short_info" class="course-info"></textarea>
                 </div>
                   
                   
@@ -40,8 +39,9 @@
             </div>
           </div>
          <section>
-            <button type="submit" class="get-editor-data">Загрузить курс</button>
+             <button type="submit" class="get-editor-data">Загрузить курс</button>
         </section>
+    </form>
     <script src="https://cdn.tiny.cloud/1/t3349wm8jxfh2mrqyd2mfnrm608ttnyliyx5m6kuyf8kl9b1/tinymce/5/tinymce.min.js"
         referrerpolicy="origin"></script>
     <script>

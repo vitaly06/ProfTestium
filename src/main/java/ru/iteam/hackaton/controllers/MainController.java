@@ -8,7 +8,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.iteam.hackaton.dao.CourseDAO;
 import ru.iteam.hackaton.dao.PersonDao;
+import ru.iteam.hackaton.models.Course;
 import ru.iteam.hackaton.models.Person;
 
 import java.util.Objects;
@@ -21,6 +23,8 @@ public class MainController {
 
     @Autowired
     PersonDao personDAO;
+    @Autowired
+    CourseDAO courseDAO;
 
     // Главная страница
     @GetMapping("/")
@@ -31,7 +35,7 @@ public class MainController {
     }
 
     @GetMapping("/tarifs")
-    public String tarifs(){
+    public String tarifs() {
         return "tarifs";
     }
 
@@ -52,12 +56,13 @@ public class MainController {
     }
 
     @GetMapping("/create_course")
-    public String createCourse(){
+    public String createCourse() {
         return "create_course";
     }
 
     @PostMapping()
-    public String saveUser(@ModelAttribute("person") @Valid Person person, BindingResult bindingResult) {
+    public String saveUser(@ModelAttribute("person") @Valid Person person,
+                           BindingResult bindingResult) {
         // Логин
         isAuth = false;
         if (person.getName() == null) {
@@ -90,13 +95,18 @@ public class MainController {
         if (isAuth) {
             data = personDAO.getData(person);
         }
-        if(Objects.equals(data[3], "teacher")){
+        if (Objects.equals(data[3], "teacher")) {
             isTeacher = 2;
-        }
-        else {
+        } else {
             isTeacher = 1;
         }
         System.out.println(isAuth);
         return "redirect:/";
+    }
+    @PostMapping("/lk")
+    public String SaveCourse(@ModelAttribute("course") Course course){
+        System.out.println(1);
+        courseDAO.save(course);
+        return "index";
     }
 }
