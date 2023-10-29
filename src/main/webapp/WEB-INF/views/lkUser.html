@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htttp://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/lkUser.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <a href="/main"><img src="resources/imgs/logo.png" alt="" width="500px"></a>
+        <p>Изучаемые курсы</p>
+    </header>
+    <div class="main">
+        <img src="resources/imgs/avatar.png" alt="" width="150" height="150">
+        <p th:text="${name}">Имя Фамилия</p>
+        <h3>Ученик</h3>
+    </div>
+    <div class="inf">
+    </div>
+    <div class="blocks">
+        <div class="rectangle"></div>
+        <div class="rectangle"></div>
+        <div class="rectangle"></div>
+      </div>
+</body>
+</html>
