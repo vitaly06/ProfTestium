@@ -17,7 +17,8 @@ import java.util.Objects;
 public class MainController {
     public boolean isAuth = false;
     public int isTeacher = 0; // 1 - student; 2 - teacher;
-    public String manName;
+    String[] data;
+
     @Autowired
     PersonDao personDAO;
 
@@ -38,8 +39,9 @@ public class MainController {
 
     @GetMapping("/lk")
     public String lk(Model model) {
-        model.addAttribute("name", manName);
-        if (isTeacher == 2) {
+        System.out.println(isTeacher);
+        model.addAttribute("name", data[0]);
+        if (Objects.equals(data[3], "teacher")) {
             return "lkAdm";
         }
         return "lkUser";
@@ -51,11 +53,10 @@ public class MainController {
         isAuth = false;
         if (person.getName() == null) {
             if (bindingResult.hasErrors()) {
-                System.out.println(bindingResult);
                 return "register";
             }
             String password = personDAO.login(person.getEmail(), true);
-            System.out.println(password);
+            //System.out.println(password);
             if (Objects.equals(password, person.getPassword())) {
                 isAuth = true; // Авторизовано успешно
             } else {
@@ -66,7 +67,7 @@ public class MainController {
                 return "/auth/";
             }
             String email = personDAO.login(person.getEmail(), false);
-            System.out.println(email + ' ' + person.getEmail());
+            //System.out.println(email + ' ' + person.getEmail());
             // Проверка, что почта не занята
             if (!Objects.equals(email, person.getEmail())) {
                 if (Objects.equals(person.getSecondPass(), person.getPassword())) {
@@ -81,16 +82,15 @@ public class MainController {
             //System.out.println("reg");
         }
         if (isAuth) {
-            System.out.println(person.getIsteacher());
-            if (Objects.equals(person.getIsteacher(), "teacher")) {
-                isTeacher = 2;
-            }
-            else{
-                isTeacher = 1;
-            }
+            data = personDAO.getData(person);
         }
-        manName = person.getName();
-        //System.out.println(isAuth);
+        if(Objects.equals(data[3], "teacher")){
+            isTeacher = 2;
+        }
+        else {
+            isTeacher = 1;
+        }
+        System.out.println(isAuth);
         return "redirect:/";
     }
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 import ru.iteam.hackaton.models.Person;
 
 import java.sql.*;
+import java.util.Arrays;
 
 @Component
 public class PersonDao {
@@ -59,6 +60,24 @@ public class PersonDao {
             throwables.printStackTrace();
         }
         return "f";
+    }
+
+    public String[] getData(Person person){
+        try {
+            Statement statement = connection.createStatement();
+            String SQL = "SELECT * FROM USERS WHERE email = '" + person.getEmail() + "'";
+            ResultSet resultSet = statement.executeQuery(SQL);
+            String name = resultSet.getString("name");
+            String email = resultSet.getString("email");
+            String password = resultSet.getString("password");
+            String isteacher = resultSet.getString("isteacher");
+            //System.out.println(name + " " + email + " " + password + " " + isteacher);
+            String[] data =  new String[] {name, email, password, isteacher};
+            return data;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return new String[4];
     }
 
 }

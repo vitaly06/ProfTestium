@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url("../imgs/bg_lk.png");
+    background-repeat: no-repeat;
+}
+
+header{
+    margin-top: 50px;
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}   
+header p{
+    color: #6F7FEA;
+    margin-left: 300px;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    font-weight: 600;
+   
+}
+
+.main {
+    margin-top: 50px;
+    margin-left: 200px;
+}
+
+.main p{
+    margin-top: 10px;
+    margin-left: -20px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 200;
+    font-size: 30px;
+    font-weight: 350;
+}
+.main h3{
+    color: white;
+    margin-left: 15px;
+}
+
+.inf p{
+    margin-top: 20px;
+    margin-left: 140px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 200;
+    font-size: 30px;
+    font-weight: 350;
+}
+
+#create{
+    margin-top: 70px;
+    margin-left: 150px;
+    position: absolute; 
+    color: #6F7FEA;
+    cursor: pointer;
+    background-color: white;
+    display: inline-block;	
+	box-sizing: border-box;
+	padding: 0 25px;
+	outline: none;
+	border: 1px solid #6F7FEA;
+	border-radius: 50px;
+	height: 66px;
+    width: 250px;
+	line-height: 46px;
+	font-size: 30px;
+	font-weight: 200;
+	text-decoration: none;
+    user-select: none;
+	appearance: none;
+	touch-action: manipulation;  
+	vertical-align: top;
+	transition: box-shadow 0.2s;
+    font-family: Ubuntu;
+}
+
+.blocks {
+    display: flex;
+    flex-direction: column;
+    margin-left: 830px;
+    margin-top: -300px;
+  }
+  
+  .rectangle {
+    border-radius: 25px;
+    width: 500px;
+    height: 130px;
+    background-color: #6F7FEA;
+    margin-bottom: 10px;
+    margin-bottom: 50px;
+  }
