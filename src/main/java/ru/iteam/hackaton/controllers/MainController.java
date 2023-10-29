@@ -30,6 +30,11 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/tarifs")
+    public String tarifs(){
+        return "tarifs";
+    }
+
     // Регистрация / авторизация
     @GetMapping("/auth")
     public String auth(Model model) {
@@ -39,12 +44,16 @@ public class MainController {
 
     @GetMapping("/lk")
     public String lk(Model model) {
-        System.out.println(isTeacher);
         model.addAttribute("name", data[0]);
         if (Objects.equals(data[3], "teacher")) {
             return "lkAdm";
         }
         return "lkUser";
+    }
+
+    @GetMapping("/create_course")
+    public String createCourse(){
+        return "create_course";
     }
 
     @PostMapping()
@@ -56,7 +65,6 @@ public class MainController {
                 return "register";
             }
             String password = personDAO.login(person.getEmail(), true);
-            //System.out.println(password);
             if (Objects.equals(password, person.getPassword())) {
                 isAuth = true; // Авторизовано успешно
             } else {
@@ -67,7 +75,6 @@ public class MainController {
                 return "/auth/";
             }
             String email = personDAO.login(person.getEmail(), false);
-            //System.out.println(email + ' ' + person.getEmail());
             // Проверка, что почта не занята
             if (!Objects.equals(email, person.getEmail())) {
                 if (Objects.equals(person.getSecondPass(), person.getPassword())) {
@@ -79,7 +86,6 @@ public class MainController {
             } else {
                 isAuth = false;
             }
-            //System.out.println("reg");
         }
         if (isAuth) {
             data = personDAO.getData(person);

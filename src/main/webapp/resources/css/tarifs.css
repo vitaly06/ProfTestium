@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #6F7FEA;
+}
+.headerLine{
+    margin-left: 20px;
+}
+
+.main p{
+    margin-top: 50px;
+    margin-left: auto;
+    color: black;
+    font-family: Ubuntu;
+    font-size: 50px;
+    font-weight: 400;
+    text-align: center;
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    
+    padding: 20px;
+  }
+  
+  .rectangle {
+    width: 300px;
+    height: 450px;
+    border-radius: 40px;
+    outline: 5px solid #6F7FEA;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .text p{
+
+    color: black;
+    font-family: Ubuntu;
+    font-size: 30px;
+    font-weight: 300;
+  }
+.text-sell{
+
+    color: black;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+  .rectangle .small-text {
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    color: black;
+    font-family: Ubuntu;
+    font-size: 20px;
+    font-weight: 200;
+  }
+  
+  .rectangle .button {
+    margin-top: 50px;
+    padding: 18px 46px;
+    background-color: #6F7FEA;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 30px;
+    font-family: Ubuntu;
+    font-size: 24;
+    text-decoration:none;
+    color: white;
+  }
+  
